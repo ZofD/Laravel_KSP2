@@ -14,7 +14,7 @@ return new class extends Migration
         Schema::create('celestial_bodies', function (Blueprint $table) {
             $table->id();
             $table->timestamps();
-            $table->string('name')->uniqid();
+            $table->string('name')->unique();
             $table->boolean('has_atmosphere'); // environment, but probably i need to redefine it
             $table->string('surfaceGravity');
             $table->string('image');

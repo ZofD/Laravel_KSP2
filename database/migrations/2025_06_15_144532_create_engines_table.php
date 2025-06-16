@@ -14,7 +14,7 @@ return new class extends Migration
         Schema::create('engines', function (Blueprint $table) {
             $table->id();
             $table->timestamps();
-            $table->string('name')->uniqid();
+            $table->string('name')->unique();
             $table->string('image');
             $table->decimal('trustAtmo', 6, 2)->comment('Trust in atmosphere (kN)');
             $table->decimal('trustVacu', 6, 2)->comment('Trust in vacume (kN)');
