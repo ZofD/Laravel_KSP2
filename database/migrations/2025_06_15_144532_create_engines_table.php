@@ -16,10 +16,10 @@ return new class extends Migration
             $table->timestamps();
             $table->string('name')->unique();
             $table->string('image');
-            $table->decimal('trustAtmo', 6, 2)->comment('Trust in atmosphere (kN)');
-            $table->decimal('trustVacu', 6, 2)->comment('Trust in vacume (kN)');
-            $table->decimal('ispAtmo', 6, 2)->comment('Specific impulse in atmosphere');
-            $table->decimal('ispVacu', 6, 2)->comment('Specific impulse in vacume');
+            $table->float('trustAtmo')->comment('Trust in atmosphere (kN)');
+            $table->float('trustVacu')->comment('Trust in vacume (kN)');
+            $table->float('ispAtmo')->comment('Specific impulse in atmosphere');
+            $table->float('ispVacu')->comment('Specific impulse in vacume');
             $table->integer('weight');
             $table->string('size', 2);
             $table->string('fuel');
