@@ -16,7 +16,7 @@ return new class extends Migration
             $table->timestamps();
             $table->string('name')->unique();
             $table->boolean('has_atmosphere'); // environment, but probably i need to redefine it
-            $table->string('surfaceGravity');
+            $table->float('surfaceGravity');
             $table->string('image');
             $table->text('description');
         });
