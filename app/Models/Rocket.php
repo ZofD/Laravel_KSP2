@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
@@ -52,9 +53,9 @@ class Rocket extends Model
     /**
      * Get the engine associated with the rocket.
      * 
-     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo<Engine, Rocket>
+     * @return BelongsTo<Engine, Rocket>
      */
-    public function engine()
+    public function engine(): BelongsTo
     {
         return $this->belongsTo(Engine::class, 'engine_id');
     }
@@ -62,9 +63,9 @@ class Rocket extends Model
     /**
      * Get the booster engine associated with the rocket.
      * 
-     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo<Engine, Rocket>
+     * @return BelongsTo<Engine, Rocket>
      */  
-    public function booster()
+    public function booster(): BelongsTo
     {
         return $this->belongsTo(Engine::class, 'booster_id');
     }
@@ -72,9 +73,9 @@ class Rocket extends Model
     /**
      * Get the celestial body associated with the rocket.
      * 
-     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo<CelestialBody, Rocket>
+     * @return BelongsTo<CelestialBody, Rocket>
      */
-    public function celestialBody()
+    public function celestialBody(): BelongsTo
     {
         return $this->belongsTo(CelestialBody::class, 'celestial_body_id');
     }
