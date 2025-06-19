@@ -41,34 +41,34 @@ class Engine extends Model
     ];
 
     /**
-     * Get the rockets that use this engine.
+     * Get the stages that use this engine.
      *
-     * @return HasMany<Rocket>
+     * @return HasMany<Stage>
      */
-    public function rocketsUsedWithEngine(): HasMany
+    public function stagesUsedWithEngine(): HasMany
     {
-        return $this->hasMany(Rocket::class, 'engine_id');
+        return $this->hasMany(Stage::class, 'engine_id');
     }
 
     /**
-     * Get the rocket that use this booster.
+     * Get the stage that use this booster.
      *
-     * @return HasMany<Rocket>
+     * @return HasMany<Stage>
      */
-    public function rocketsUsedWithBooster(): HasMany
+    public function stagesUsedWithBooster(): HasMany
     {
-        return $this->hasMany(Rocket::class, 'booster_id');
+        return $this->hasMany(Stage::class, 'booster_id');
     }
 
     /**
-     * Get the rockets that use this engine or booster.
+     * Get the stages that use this engine or booster.
      *
-     * @return Collection<Rocket>
+     * @return Collection<Stage>
      */
-    public function allRocketsUsedIn(): Collection
+    public function allStagesUsedIn(): Collection
     {
-        return $this->rocketsUsedWithEngine->merge($this->rocketsUsedWithBooster);
-        return $this->hasMany(Rocket::class, 'engine_id')
+        return $this->stagesUsedWithEngine->merge($this->stagesUsedWithBooster);
+        return $this->hasMany(Stage::class, 'engine_id')
             ->orWhere('booster_id', $this->id);
     }
 }

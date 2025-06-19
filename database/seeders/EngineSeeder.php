@@ -17,6 +17,10 @@ class EngineSeeder extends Seeder
     {
         $path = database_path('data/engines.json');
         $data = json_decode(file_get_contents($path), true);
-        Engine::insert($data);
+
+        foreach ($data as $item) {
+            Engine::create($item);
+        }
+        // Engine::insert($data);
     }
 }

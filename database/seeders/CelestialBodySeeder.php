@@ -16,14 +16,9 @@ class CelestialBodySeeder extends Seeder
         $path = database_path('data/celestial_bodies.json');
         $data = json_decode(file_get_contents($path), true);
 
-        if (!$data) {
-            dd('Błąd dekodowania JSON', json_last_error_msg());
+        foreach ($data as $item) {
+            CelestialBody::create($item);
         }
-
-        // Debug: ile rekordów i przykładowy rekord
-        info('Liczba rekordów: ' . count($data));
-        info('Pierwszy rekord:', $data[0] ?? []);
-
-        CelestialBody::insert($data);
+        // CelestialBody::insert($data);
     }
 }

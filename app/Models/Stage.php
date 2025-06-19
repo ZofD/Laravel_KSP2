@@ -6,9 +6,9 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Rocket extends Model
+class Stage extends Model
 {
-    /** @use HasFactory<\Database\Factories\RocketFactory> */
+    /** @use HasFactory<\Database\Factories\StageFactory> */
     use HasFactory;
 
     /**
@@ -16,6 +16,7 @@ class Rocket extends Model
      */
     protected $fillable = [
         'name',
+        'description',
         'engine_id',
         'engine_count',
         'booster_id',
@@ -51,9 +52,9 @@ class Rocket extends Model
     ];
 
     /**
-     * Get the engine associated with the rocket.
-     * 
-     * @return BelongsTo<Engine, Rocket>
+     * Get the engine associated with the stage.
+     *
+     * @return BelongsTo<Engine, Stage>
      */
     public function engine(): BelongsTo
     {
@@ -61,19 +62,19 @@ class Rocket extends Model
     }
 
     /**
-     * Get the booster engine associated with the rocket.
-     * 
-     * @return BelongsTo<Engine, Rocket>
-     */  
+     * Get the booster engine associated with the stage.
+     *
+     * @return BelongsTo<Engine, Stage>
+     */
     public function booster(): BelongsTo
     {
         return $this->belongsTo(Engine::class, 'booster_id');
     }
 
     /**
-     * Get the celestial body associated with the rocket.
-     * 
-     * @return BelongsTo<CelestialBody, Rocket>
+     * Get the celestial body associated with the stage.
+     *
+     * @return BelongsTo<CelestialBody, Stage>
      */
     public function celestialBody(): BelongsTo
     {
