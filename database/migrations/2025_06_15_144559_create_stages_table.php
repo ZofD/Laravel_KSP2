@@ -11,10 +11,11 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('rockets', function (Blueprint $table) {
+        Schema::create('stages', function (Blueprint $table) {
             $table->id();
             $table->timestamps();
             $table->string('name')->unique();
+            $table->text('description');
             $table->foreignId('engine_id');
             $table->integer('engine_count')->default(1);
             $table->foreignId('booster_id')->constrained('engines')->nullable();
@@ -36,6 +37,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('rockets');
+        Schema::dropIfExists('stages');
     }
 };
