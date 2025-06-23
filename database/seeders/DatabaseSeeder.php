@@ -23,7 +23,6 @@ class DatabaseSeeder extends Seeder
         $this->call([
             CelestialBodySeeder::class,
             EngineSeeder::class,
-            StageSeeder::class,
         ]);
     }
 }
