@@ -14,8 +14,9 @@ return new class extends Migration
         Schema::create('stages', function (Blueprint $table) {
             $table->id();
             $table->timestamps();
-            $table->string('name')->unique();
+            $table->string('name');
             $table->text('description');
+            $table->decimal('version', 4, 2)->default(1.0);
             $table->foreignId('engine_id');
             $table->integer('engine_count')->default(1);
             $table->foreignId('booster_id')->constrained('engines')->nullable();

@@ -17,6 +17,9 @@ class Stage extends Model
     protected $fillable = [
         'name',
         'description',
+        'version',
+        'rocket_id',
+        'stage_position',
         'engine_id',
         'engine_count',
         'booster_id',
@@ -38,6 +41,8 @@ class Stage extends Model
      * @var array<string, string>
      */
     protected $casts = [
+        'rocket_id'         => 'integer',
+        'stage_position'    => 'integer',
         'engine_id'         => 'integer',
         'engine_count'      => 'integer',
         'booster_id'        => 'integer',
@@ -69,6 +74,16 @@ class Stage extends Model
     public function booster(): BelongsTo
     {
         return $this->belongsTo(Engine::class, 'booster_id');
+    }
+
+    /**
+     * Get the rocket associated with the stage.
+     *
+     * @return BelongsTo<Rocket, Stage>
+     */
+    public function rocket(): BelongsTo
+    {
+        return $this->belongsTo(Rocket::class, 'rocket_id');
     }
 
     /**
